@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poke Collector</title>
-</head>
-<body>
-  <h1>About the Poke Collector</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+{% comment %} Here I am extending base.html using the HTML below to plug what I want into the content block of base.html. Template inheritance is awesome! {% endcomment %}
+
+<h1>About the Poke Collector</h1>
+<br />
+<p>Poke Collector is a fun Pokemon collecting app written in Django and Python!</p>
+
+{% endblock %}
