@@ -7,12 +7,16 @@
 
 {% block content %}
 
-<section class="page-header">
+{% comment %} 
+Will work on this feature later when concentrating more on images 
+{% endcomment %}
+
+{% comment %} <section class="page-header">
   <h1>Pokemon List</h1>
   <img src="" alt="Bulbasaur" />
   <img src="{% static '' %}" alt="Charmander" />
   <img src="" alt="Squirtle" />
-</section>
+</section> {% endcomment %}
 
 <section class="card-container">
   {% for pokemon in pokemon %}
@@ -21,11 +25,11 @@
         <div class="card-img-container">
           <img 
             src="" 
-            alt="Bulbasaur"
+            alt="Pokemon"
           >
         </div>
-        <h2 class="card-title">{{ cat.name }}</h2>
-          <p>A Gen: {{ pokemon.generation }} {{ pokemon.type }} grass type pokemon</p>
+        <h2 class="card-title">{{ pokemon.name }}</h2>
+          <p>A Generation: {{ pokemon.generation }}, {{ pokemon.type }} type pokemon</p>
         <p><small>{{ pokemon.description }}</small></p>
       </div>
     </div>
