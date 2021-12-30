@@ -21,7 +21,7 @@ Will work on this feature later when concentrating more on images
 <section class="card-container">
   {% for pokemon in pokemon %}
     <div class="card">
-      <a href="/pokemon/{{ pokemon.id }}">
+      <a href="{% url 'pokemon_detail' pokemon.id %}">
       <div class="card-content">
         <div class="card-img-container">
           <img 
