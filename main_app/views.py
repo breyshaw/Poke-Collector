@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pokemon
+from .forms import FeedingForm
 
 # Defining the home view
 def home(request):
@@ -13,7 +14,12 @@ def pokemon_index(request):
 
 def pokemon_detail(request, pokemon_id):
   pokemon = Pokemon.objects.get(id=pokemon_id)
-  return render(request, 'pokemon/detail.html', {'pokemon': pokemon})
+  # instantiate FeedingForm to be rendered in the template
+  feeding_form = FeedingForm()
+  return render(request, 'pokemon/detail.html', {
+    # include the cat and feeding_form in the context
+    'pokemon': pokemon, 'feeding_form': feeding_form
+  })
 
 # inheriting the imported CreateView CBV to create our own class based view to create pokemon
 class PokemonCreate(CreateView):
