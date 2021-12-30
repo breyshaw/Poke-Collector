@@ -8,5 +8,7 @@ urlpatterns = [
   # Trailing slashes are convention for Django
   path('about/', views.about, name='about'),
   path('pokemon/', views.pokemon_index, name='pokemon_index'),
-  path('pokemon/<int:pokemon_id>/', views.pokemon_detail, name="pokemon_detail")
+  path('pokemon/<int:pokemon_id>/', views.pokemon_detail, name="pokemon_detail"),
+  # CBV examples
+  path('pokemon/create/', views.PokemonCreate.as_view(), name='pokemon_create'),
 ]
