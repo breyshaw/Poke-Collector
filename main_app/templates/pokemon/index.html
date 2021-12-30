@@ -21,6 +21,7 @@ Will work on this feature later when concentrating more on images
 <section class="card-container">
   {% for pokemon in pokemon %}
     <div class="card">
+      <a href="/pokemon/{{ pokemon.id }}">
       <div class="card-content">
         <div class="card-img-container">
           <img 
@@ -32,6 +33,7 @@ Will work on this feature later when concentrating more on images
           <p>A Generation: {{ pokemon.generation }}, {{ pokemon.type }} type pokemon</p>
         <p><small>{{ pokemon.description }}</small></p>
       </div>
+    </a>
     </div>
   {% endfor %}
 </section>

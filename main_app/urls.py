@@ -7,5 +7,6 @@ urlpatterns = [
   path('', views.home, name='home'),
   # Trailing slashes are convention for Django
   path('about/', views.about, name='about'),
-  path('pokemon/', views.pokemon_index, name='pokemon_index')
+  path('pokemon/', views.pokemon_index, name='pokemon_index'),
+  path('pokemon/<int:pokemon_id>/', views.pokemon_detail, name="pokemon_detail")
 ]
