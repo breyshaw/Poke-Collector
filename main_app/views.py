@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pokemon
 
 # Defining the home view
@@ -20,6 +20,14 @@ class PokemonCreate(CreateView):
   model = Pokemon
   # the fields attribute is required and can be used to limit or change the ordering of attributes
   fields = '__all__'
+  success_url = '/pokemon/'
+
+class PokemonUpdate(UpdateView):
+  model = Pokemon
+  fields = ['name', 'type', 'description', 'generation']
+
+class PokemonDelete(DeleteView):
+  model = Pokemon
   success_url = '/pokemon/'
 
 def about(request):
