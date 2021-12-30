@@ -1,11 +1,10 @@
 from django.shortcuts import render
-#For testing purposes
-from django.http import HttpResponse
 
 # Defining the home view
 def home(request):
-  return HttpResponse('<h1>Gotta Catch Em All!</h1>')
-
+  return render(request, 'home.html')
+  
+# index view, sending dictonary pokemon
 def pokemon_index(request):
   return render(request, 'pokemon/index.html', {'pokemon': pokemon})
 
