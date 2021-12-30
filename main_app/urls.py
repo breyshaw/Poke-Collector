@@ -6,5 +6,6 @@ urlpatterns = [
   # The name='home' kwarg is optional but will come in handly referencing the URL from other parts of the app.
   path('', views.home, name='home'),
   # Trailing slashes are convention for Django
-  path('about/', views.about, name='about')
+  path('about/', views.about, name='about'),
+  path('pokemon/', views.pokemon_index, name='pokemon_index')
 ]
