@@ -36,3 +36,8 @@
   margin: 5px 0;
   font-size: var(--font-reg);
 }
+
+#pokeball-img {
+  width: 100%;
+  border-radius: var(--card-border-radius);
+}
