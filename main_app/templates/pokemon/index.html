@@ -7,27 +7,34 @@
 
 {% block content %}
 
-{% comment %} 
-Will work on this feature later when concentrating more on images 
-{% endcomment %}
 
-{% comment %} <section class="page-header">
+
+<section class="page-header">
   <h1>Pokemon List</h1>
   <img src="" alt="Bulbasaur" />
   <img src="{% static '' %}" alt="Charmander" />
   <img src="" alt="Squirtle" />
-</section> {% endcomment %}
+</section> 
 
-<section class="card-container">
+<section class='card-container'>
   {% for pokemon in pokemon %}
     <div class="card">
       <a href="{% url 'pokemon_detail' pokemon.id %}">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="" 
-            alt="Pokemon"
-          >
+        <div class="card-content">
+          <div class="card-img-container">
+            {% if pokemon.photo.url %}
+              <img 
+                src="{{pokemon.photo.url}}" 
+                alt="A photo of {{pokemon.name}}"
+                class="usr-img"
+              >
+            {% else %}
+              <img 
+                src="{% static '' %}" 
+                alt="Pokeball"
+              >
+            {% endif %}
+          </div>
         </div>
         <h2 class="card-title">{{ pokemon.name }}</h2>
           <p>A Generation: {{ pokemon.generation }}, {{ pokemon.type }} type pokemon</p>

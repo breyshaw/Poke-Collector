@@ -21,10 +21,18 @@
 
 <section class="pokemon-container">
   <div class="pokemon-img">
+    {% if pokemon.photo.url %}
+    <img 
+      src="{{pokemon.photo.url}}" 
+      alt="A photo of {{pokemon.name}}"
+      class="usr-img"
+    >
+  {% else %}
     <img 
       src="{% static '' %}" 
-      alt="Pokemon"
+      alt="Pokeball"
     >
+  {% endif %}
   </div>
   <div class="pokemon-details">
     <h2>{{ pokemon.name }}</h2>
@@ -33,6 +41,20 @@
     <div class="pokemon-actions">
       <a href="{% url 'pokemon_update' pokemon.id %}" class="btn warn">Edit</a>
       <a href="{% url 'pokemon_delete' pokemon.id %}" class="btn danger">Delete</a>
+      <h3>Change {{ pokemon.name }}'s photo</h3>
+      <p id="file-name"></p>
+      <form 
+        action="{% url 'add_photo' pokemon.id %}"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        {% csrf_token %}
+        <label class="btn secondary">
+          Choose photo
+          <input type="file" name="photo-file" id="file-input">
+        </label>
+        <button type="submit" class="btn submit">Upload Photo</button>
+      </form>
     </div>
   </div>
 </section>
