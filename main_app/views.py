@@ -15,11 +15,13 @@ def pokemon_index(request):
 
 def pokemon_detail(request, pokemon_id):
   pokemon = Pokemon.objects.get(id=pokemon_id)
+  # Get the toys the mon doesn't have
+  toys_pokemon_doesnt_have = Toy.objects.exclude(id__in = pokemon.toys.all().values_list('id'))
   # instantiate FeedingForm to be rendered in the template
   feeding_form = FeedingForm()
   return render(request, 'pokemon/detail.html', {
     # include the cat and feeding_form in the context
-    'pokemon': pokemon, 'feeding_form': feeding_form
+    'pokemon': pokemon, 'feeding_form': feeding_form, 'toys': toys_pokemon_doesnt_have
   })
 
 def add_feeding(request, pokemon_id):
@@ -39,7 +41,7 @@ def add_feeding(request, pokemon_id):
 class PokemonCreate(CreateView):
   model = Pokemon
   # the fields attribute is required and can be used to limit or change the ordering of attributes
-  fields = '__all__'
+  fields = ['name', 'type', 'description', 'generation']
   success_url = '/pokemon/'
 
 class PokemonUpdate(UpdateView):
@@ -68,8 +70,10 @@ class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
 
+def assoc_toy(request, pokemon_id, toy_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Pokemon.objects.get(id=pokemon_id).toys.add(toy_id)
+  return redirect('pokemon_detail', pokemon_id=pokemon_id)
+
 def about(request):
   return render(request, 'about.html')
-
-
-
